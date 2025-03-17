@@ -1,0 +1,393 @@
+@import 
+    "./fontStyles.scss",
+    "./nullStyles.scss",
+    "./style-inheritance.scss",
+    "./mixinStyles.scss";
+
+
+.svg-shop-name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        width: 100%;
+    }
+}
+
+.shop-section {
+    width: 100%;
+    min-height: 100vh;
+
+    .burger-menu {
+        width: 101vw;
+    }
+
+    .name-shop-block {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        p {
+            @extend %rokkitt_regular;
+            font-size: clamp(5rem, -1rem + 7.5vw, 8rem);
+            letter-spacing: 49px;
+            line-height: 110%;
+            opacity: 0.05;
+        }
+    }
+
+}
+
+
+.products-block {
+
+    &__container {
+        display: flex;
+        flex-direction: row;
+        padding: 0px 3vw 50px;
+    }
+}
+
+.filter-block {
+    position: sticky;
+    top: 20px;
+    width: 20%;
+    height: 100%;
+
+
+    &__container {
+        padding: 20px 10px; 
+    }
+   
+}
+
+.settings-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    
+    h2 {
+        @extend %montserrat_medium;
+        font-size: 2rem;
+        text-align: center;
+    }
+
+
+    .form-settings {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        &__block {
+            display: flex;
+            flex-direction: column;
+            
+
+            p {
+                @extend %montserrat_regular;
+                font-size: 1.5rem;
+                text-decoration: underline;
+            }
+
+            
+        }
+
+        &__input {
+            margin-top: 5px;
+            margin-bottom: 10px;
+            margin-left: 20px;
+            gap: 10px;
+        
+            input[type="checkbox"] {
+                width: 19px;
+                height: 19px;
+                border-radius: 5px
+            }
+            label {
+                @extend %montserrat_regular;
+                font-size: 1rem;
+            }
+        
+        }
+
+    }
+
+    input[type="submit"] {
+        width: 60%;
+        height: 40px;
+        background-color: black;
+        border-radius: 50px;
+    }
+    input[value="Apply"] {
+       color: white;
+       @extend %montserrat_medium;
+       font-size: 1rem;
+    }
+}
+
+
+
+
+.sneakers-block {
+    display: flex;
+    flex-direction: inherit;
+    justify-content: center;
+    width: 100%;
+
+
+    &__container {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        justify-content: center;
+        gap: 30px;
+
+    }
+
+    .sneaker-card {
+        width: 280px;
+        height:320px;
+        border-radius: 20px;
+        box-shadow: 0px 0px 13px 1px rgba(34, 60, 80, 0.1);
+        transition: 0.3s;              
+
+        &__container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            padding-bottom: 10px;
+
+            .image-sneaker {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+                width: 66%;
+            }
+
+            p {
+                @extend %montserrat_medium;
+                font-size: 1.25rem;
+                text-align: center;
+            }
+
+            .price-sneaker {
+                p {
+                    @extend %montserrat_regular;
+                    font-size: 1.5rem;
+                }
+            }
+
+
+        }
+
+        &:hover {
+            box-shadow: 0px 0px 13px 1px rgba(0, 255, 0, 0.35);
+        }
+
+    }   
+
+    .sneaker-card-off {
+        display: none;
+    }
+}
+
+
+.info-sneakers-block {
+    display: none;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: rgb(0 0 0 / 10%);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    overflow: hidden;
+
+
+
+
+    &__container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+
+        .modal-sneaker-card {
+            position: relative;
+            width: 70%;
+            height: 70%;
+            background-color: white;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 0, 0, 0.4);
+
+            >p {
+                position: absolute;
+                top: 34px;
+                right: 30px;
+                @extend %montserrat_regular;
+                font-size: 1rem;
+                opacity: 0.6;
+                cursor: pointer;
+                 
+                &::after {
+                    @extend %line-link;
+                    opacity: 0.6;
+                }
+            }
+
+            &__container {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 6.25% 4.2%;
+                height: 100%;
+
+                .preview-image-block{
+                    display: flex;
+                    align-items: center;
+
+
+                    &__container {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 5px;
+
+                        .image-block {
+                            // display: flex;
+                            // align-items: center;
+                            // justify-content: center;
+                            width: 3.64vw;
+                            overflow: hidden;
+                            border: 1px solid rgba(0, 0, 0, 0.6);
+                            border-radius: 10px;
+
+                            img {
+                                width: 100%;
+                                image-rendering: pixelated;
+
+                                :nth-child(1) {
+                                    -webkit-backdrop-filter: blur(6px);
+                                    backdrop-filter: blur(6px);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .viewed-image-block {
+                    display: flex;
+
+                    > img {
+                        object-fit: contain;
+                    }
+                }
+
+                .info-model-sneaker-block {
+                    display: flex;
+                    width: 33.1%;
+                    flex-direction: column;
+                    justify-content: space-between;
+
+                    .info-text {
+                        h1 {
+                            @extend %montserrat_medium;
+                            font-size: 1.666667vw; 
+                        }
+
+                        p {
+                            @extend %montserrat_regular;
+                            font-size: 0.833335vw;
+                        }
+                    }
+
+
+                    .add-to-bag-block {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 30px;
+
+                        .sizes-block {
+                            >p {
+                                @extend %montserrat_regular;
+                                font-size: 2rem;
+                            }
+
+                            &__container {
+                                display: grid;
+                                grid-template-columns: 22% 22% 22% 22%;
+                                grid-template-rows: 50% 50%;
+                                gap: 5px;
+                                
+                                gap: 5px;
+                                .size-button {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    @extend %montserrat_regular;
+                                    font-size: 1.25rem;
+                                    padding: 0.25em 0.75em;
+                                    border: 1px solid black;
+                                    border-radius: 10px;
+                                }
+                            }
+
+                        }
+
+                        .bag-buttons {
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: space-between;
+                            align-items: center;
+                            gap: 30px;
+
+                            .bag-button {
+                                display: flex;
+                                flex-direction: row;
+                                align-items: center;
+                                justify-content: center;
+                                width: 100%;
+                                height: 62px;
+                                background: black;
+                                border-radius: 40px;
+                                gap: 15px;
+                                
+                                p {
+                                    font-size: 1.5rem;
+                                    color: white;
+                                }
+
+                            }
+                        }
+
+
+
+
+                    }
+
+                }
+                
+
+
+
+
+            }
+        }
+    }
+
+}
+
+.modal-visible {
+    display: block;
+}
+
+
+
+
+
+
+
